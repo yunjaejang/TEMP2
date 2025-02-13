@@ -17,26 +17,36 @@
             gap: 20px;
         }
 
+        /* 기본 라디오 버튼 숨김 */
         input[type="radio"] {
             display: none;
         }
 
+        /* 원형 버튼 스타일 */
         label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #007BFF;
+            border-radius: 50%;
             cursor: pointer;
-            padding: 10px 20px;
-            border: 2px solid #007BFF;
-            border-radius: 5px;
-            background-color: white;
-            color: #007BFF;
-            font-weight: bold;
             transition: all 0.3s ease-in-out;
+            position: relative;
         }
 
-        input[type="radio"]:checked + label {
+        /* 선택된 경우 원 안을 채움 */
+        input[type="radio"]:checked + label::after {
+            content: "";
+            width: 20px;
+            height: 20px;
             background-color: #007BFF;
-            color: white;
+            border-radius: 50%;
+            position: absolute;
         }
 
+        /* 선택한 값 표시 */
         #selected-value {
             margin-top: 20px;
             font-size: 18px;
@@ -50,10 +60,10 @@
 
     <div class="radio-group">
         <input type="radio" id="direct" name="farmtype" value="직영">
-        <label for="direct">직영</label>
+        <label for="direct"></label>
 
         <input type="radio" id="consignment" name="farmtype" value="위탁">
-        <label for="consignment">위탁</label>
+        <label for="consignment"></label>
     </div>
 
     <div id="selected-value">선택한 값: 없음</div>

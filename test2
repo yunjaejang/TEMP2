@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라디오 버튼 필터</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            background-color: white;
+            color: #007BFF;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="radio"]:checked + label {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        #selected-value {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>농장 유형 선택</h2>
+
+    <div class="radio-group">
+        <input type="radio" id="direct" name="farmtype" value="직영">
+        <label for="direct">직영</label>
+
+        <input type="radio" id="consignment" name="farmtype" value="위탁">
+        <label for="consignment">위탁</label>
+    </div>
+
+    <div id="selected-value">선택한 값: 없음</div>
+
+    <script>
+        document.querySelectorAll('input[name="farmtype"]').forEach((radio) => {
+            radio.addEventListener("change", function() {
+                document.getElementById("selected-value").innerText = "선택한 값: " + this.value;
+                console.log("선택된 값:", this.value);
+            });
+        });
+    </script>
+
+</body>
+</html>

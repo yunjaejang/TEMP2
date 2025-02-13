@@ -14,7 +14,13 @@
         .radio-group {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
+        }
+
+        .radio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* 기본 라디오 버튼 숨김 */
@@ -23,7 +29,7 @@
         }
 
         /* 원형 버튼 스타일 */
-        label {
+        .radio-label {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -37,7 +43,7 @@
         }
 
         /* 선택된 경우 원 안을 채움 */
-        input[type="radio"]:checked + label::after {
+        input[type="radio"]:checked + .radio-label::after {
             content: "";
             width: 20px;
             height: 20px;
@@ -46,11 +52,11 @@
             position: absolute;
         }
 
-        /* 선택한 값 표시 */
-        #selected-value {
-            margin-top: 20px;
-            font-size: 18px;
+        /* 버튼 위에 텍스트 표시 */
+        .radio-text {
+            font-size: 16px;
             font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -59,19 +65,22 @@
     <h2>농장 유형 선택</h2>
 
     <div class="radio-group">
-        <input type="radio" id="direct" name="farmtype" value="직영">
-        <label for="direct"></label>
+        <div class="radio-container">
+            <div class="radio-text">직영</div>
+            <input type="radio" id="direct" name="farmtype" value="직영">
+            <label for="direct" class="radio-label"></label>
+        </div>
 
-        <input type="radio" id="consignment" name="farmtype" value="위탁">
-        <label for="consignment"></label>
+        <div class="radio-container">
+            <div class="radio-text">위탁</div>
+            <input type="radio" id="consignment" name="farmtype" value="위탁">
+            <label for="consignment" class="radio-label"></label>
+        </div>
     </div>
-
-    <div id="selected-value">선택한 값: 없음</div>
 
     <script>
         document.querySelectorAll('input[name="farmtype"]').forEach((radio) => {
             radio.addEventListener("change", function() {
-                document.getElementById("selected-value").innerText = "선택한 값: " + this.value;
                 console.log("선택된 값:", this.value);
             });
         });
@@ -79,3 +88,4 @@
 
 </body>
 </html>
+
